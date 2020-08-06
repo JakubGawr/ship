@@ -18,7 +18,11 @@
     "paths": {
       "@ship-game/api-interfaces": ["libs/api-interfaces/src/index.ts"],
       "@ship-game/data": ["libs/data/src/index.ts"],
-      "@ship-game/data-connection": ["libs/data-connection/src/index.ts"]
+      "@ship-game/data-connection": ["libs/data-connection/src/index.ts"],
+      "@ship-game/backend/schema": ["libs/backend/schema/src/index.ts"],
+      "@ship-game/db-connect": ["libs/db-connect/src/index.ts"],
+      "@ship-game/backend/db-connect": ["libs/backend/db-connect/src/index.ts"],
+      "@ship-game/backend/validation": ["libs/backend/validation/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]
