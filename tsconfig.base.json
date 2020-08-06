@@ -16,7 +16,9 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@ship-game/api-interfaces": ["libs/api-interfaces/src/index.ts"]
+      "@ship-game/api-interfaces": ["libs/api-interfaces/src/index.ts"],
+      "@ship-game/data": ["libs/data/src/index.ts"],
+      "@ship-game/data-connection": ["libs/data-connection/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]
