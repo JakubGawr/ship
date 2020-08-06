@@ -43,6 +43,9 @@
     },
     "frontend-dashboard": {
       "tags": []
+    },
+    "frontend-game": {
+      "tags": []
     }
   }
 }
