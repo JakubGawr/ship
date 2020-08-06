@@ -52,6 +52,12 @@
     },
     "backend-validation": {
       "tags": []
+    },
+    "frontend-dashboard": {
+      "tags": []
+    },
+    "frontend-game": {
+      "tags": []
     }
   }
 }

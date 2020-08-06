@@ -258,6 +258,70 @@
         }
       }
     },
+    "frontend-dashboard": {
+      "projectType": "library",
+      "root": "libs/frontend/dashboard",
+      "sourceRoot": "libs/frontend/dashboard/src",
+      "prefix": "ui",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/frontend/dashboard/tsconfig.lib.json",
+              "libs/frontend/dashboard/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/frontend/dashboard/**/*"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/frontend/dashboard/jest.config.js",
+            "tsConfig": "libs/frontend/dashboard/tsconfig.spec.json",
+            "passWithNoTests": true,
+            "setupFile": "libs/frontend/dashboard/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "style": "scss"
+        }
+      }
+    },
+    "frontend-game": {
+      "projectType": "library",
+      "root": "libs/frontend/game",
+      "sourceRoot": "libs/frontend/game/src",
+      "prefix": "ship-game",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/frontend/game/tsconfig.lib.json",
+              "libs/frontend/game/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/frontend/game/**/*"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/frontend/game/jest.config.js",
+            "tsConfig": "libs/frontend/game/tsconfig.spec.json",
+            "passWithNoTests": true,
+            "setupFile": "libs/frontend/game/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "style": "scss"
+        }
+      }
+    },
     "backend-schema": {
       "root": "libs/backend/schema",
       "sourceRoot": "libs/backend/schema/src",
@@ -364,7 +428,8 @@
     }
   },
   "cli": {
-    "defaultCollection": "@nrwl/angular"
+    "defaultCollection": "@nrwl/angular",
+    "analytics": false
   },
   "schematics": {
     "@nrwl/angular:application": {
