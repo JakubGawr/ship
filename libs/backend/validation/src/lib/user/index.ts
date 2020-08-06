@@ -14,6 +14,5 @@ export class UserLoginDTO {
 export class UserRegisterDTO extends UserLoginDTO{
   @MinLength(3)
   @IsEmail()
-  @IsString()
   email: string;
 }
