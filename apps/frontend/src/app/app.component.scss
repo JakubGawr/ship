@@ -1,4 +1,12 @@
+:host{
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+}
+.wrapper{
+  display: grid;
+  grid-template-columns: 200px 1fr;
+}
 .content{
     display: flex;
-    flex: 1;
 }

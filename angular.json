@@ -262,7 +262,7 @@
       "projectType": "library",
       "root": "libs/frontend/dashboard",
       "sourceRoot": "libs/frontend/dashboard/src",
-      "prefix": "ship-game",
+      "prefix": "ui",
       "architect": {
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",

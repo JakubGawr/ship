@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'ship-game-logo',
+  selector: 'ui-logo',
   templateUrl: './logo.component.html',
   styleUrls: ['./logo.component.scss']
 })

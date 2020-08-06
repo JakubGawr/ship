@@ -22,7 +22,7 @@ const config: SocketIoConfig = { url: 'http://localhost:3333', options: {} };
     SocketIoModule.forRoot(config),
     FrontendDashboardModule,
     AppRoutingModule,
-    FrontendGameModule
+    FrontendGameModule,
   ],
   providers: [
     {

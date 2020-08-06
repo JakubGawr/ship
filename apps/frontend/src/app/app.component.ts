@@ -5,7 +5,7 @@ import { SocketModel } from '@ship-game/data-connection';
 import { SOCKET_TOKEN } from './tokens';
 
 @Component({
-  selector: 'ship-game-root',
+  selector: 'ui-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
 })
