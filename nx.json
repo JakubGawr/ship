@@ -40,6 +40,18 @@
     },
     "data-connection": {
       "tags": []
+    },
+    "backend-schema": {
+      "tags": []
+    },
+    "db-connect": {
+      "tags": []
+    },
+    "backend-db-connect": {
+      "tags": []
+    },
+    "backend-validation": {
+      "tags": []
     }
   }
 }
