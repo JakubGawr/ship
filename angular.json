@@ -321,6 +321,110 @@
           "style": "scss"
         }
       }
+    },
+    "backend-schema": {
+      "root": "libs/backend/schema",
+      "sourceRoot": "libs/backend/schema/src",
+      "projectType": "library",
+      "schematics": {},
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/backend/schema/tsconfig.lib.json",
+              "libs/backend/schema/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/backend/schema/**/*"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/backend/schema/jest.config.js",
+            "tsConfig": "libs/backend/schema/tsconfig.spec.json",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "db-connect": {
+      "root": "libs/db-connect",
+      "sourceRoot": "libs/db-connect/src",
+      "projectType": "library",
+      "schematics": {},
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/db-connect/tsconfig.lib.json",
+              "libs/db-connect/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/db-connect/**/*"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/db-connect/jest.config.js",
+            "tsConfig": "libs/db-connect/tsconfig.spec.json",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "backend-db-connect": {
+      "root": "libs/backend/db-connect",
+      "sourceRoot": "libs/backend/db-connect/src",
+      "projectType": "library",
+      "schematics": {},
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/backend/db-connect/tsconfig.lib.json",
+              "libs/backend/db-connect/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/backend/db-connect/**/*"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/backend/db-connect/jest.config.js",
+            "tsConfig": "libs/backend/db-connect/tsconfig.spec.json",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "backend-validation": {
+      "root": "libs/backend/validation",
+      "sourceRoot": "libs/backend/validation/src",
+      "projectType": "library",
+      "schematics": {},
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/backend/validation/tsconfig.lib.json",
+              "libs/backend/validation/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/backend/validation/**/*"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/backend/validation/jest.config.js",
+            "tsConfig": "libs/backend/validation/tsconfig.spec.json",
+            "passWithNoTests": true
+          }
+        }
+      }
     }
   },
   "cli": {

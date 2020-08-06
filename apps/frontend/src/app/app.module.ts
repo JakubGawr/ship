@@ -7,8 +7,8 @@ import { SocketService } from '@ship-game/data-connection';
 import { SocketIoConfig, SocketIoModule } from 'ngx-socket-io';
 import { SOCKET_TOKEN } from './tokens';
 
-import { FrontendDashboardModule } from '@ship-game/frontend/dashboard' 
-import { FrontendGameModule } from '@ship-game/frontend/game' 
+import { FrontendDashboardModule } from '@ship-game/frontend/dashboard'
+import { FrontendGameModule } from '@ship-game/frontend/game'
 
 import { AppRoutingModule } from './app-routing.module'
 
