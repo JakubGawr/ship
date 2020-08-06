@@ -40,6 +40,9 @@
     },
     "data-connection": {
       "tags": []
+    },
+    "frontend-dashboard": {
+      "tags": []
     }
   }
 }
