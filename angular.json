@@ -425,6 +425,70 @@
           }
         }
       }
+    },
+    "frontend-scores": {
+      "projectType": "library",
+      "root": "libs/frontend/scores",
+      "sourceRoot": "libs/frontend/scores/src",
+      "prefix": "ship-game",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/frontend/scores/tsconfig.lib.json",
+              "libs/frontend/scores/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/frontend/scores/**/*"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/frontend/scores/jest.config.js",
+            "tsConfig": "libs/frontend/scores/tsconfig.spec.json",
+            "passWithNoTests": true,
+            "setupFile": "libs/frontend/scores/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "style": "scss"
+        }
+      }
+    },
+    "frontend-rules": {
+      "projectType": "library",
+      "root": "libs/frontend/rules",
+      "sourceRoot": "libs/frontend/rules/src",
+      "prefix": "ship-game",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/frontend/rules/tsconfig.lib.json",
+              "libs/frontend/rules/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/frontend/rules/**/*"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/frontend/rules/jest.config.js",
+            "tsConfig": "libs/frontend/rules/tsconfig.spec.json",
+            "passWithNoTests": true,
+            "setupFile": "libs/frontend/rules/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "style": "scss"
+        }
+      }
     }
   },
   "cli": {

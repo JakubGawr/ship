@@ -1,8 +1,39 @@
 .sidebar{
+    position: relative;
     display: flex;
     flex-direction: column;
     height: 100vh;
     background: var(--primary-blue);
-    width: auto;
+    width: 100%;
     align-items: center;
+}
+
+.logo{
+    padding: 20px;
+    font-size: 39px;
+    font-family: 'Bungee Shade';
+    color: white
+}
+
+.collapse{
+    position: absolute;
+    display: flex;
+    right: 0;
+    top: 50%;
+    width: 30px;
+    height: 30px;;
+    background: #06031d;
+    border-radius: 50%;
+    transform: translate(50%, 50%);
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+
+    img{
+        transition: 450ms ease-in;
+    }
+}
+
+.rotated{
+    transform: rotate(180deg);
 }

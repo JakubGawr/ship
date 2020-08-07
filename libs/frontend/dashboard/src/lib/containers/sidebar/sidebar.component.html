@@ -1,3 +1,8 @@
-<div class="sidebar">
-    <ui-sidebar-item *ngFor='let item of navItems' [sidebarItem]='item'></ui-sidebar-item>
+<div class="sidebar" [@collapse]='collapsed'>
+    <div class="logo"> Statki </div>
+    <ui-sidebar-item *ngFor='let item of navItems' [sidebarItem]='item' [ngStyle]=''></ui-sidebar-item>
+
+    <div class="collapse" (click)='collapseSidebar()' > 
+        <img src="../assets/arrow.svg" [ngClass]="collapsed ? 'rotated' : ''">
+    </div>
 </div>

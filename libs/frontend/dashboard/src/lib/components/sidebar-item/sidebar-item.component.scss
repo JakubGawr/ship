@@ -6,9 +6,11 @@
   cursor: pointer;
   text-align: center;
   text-transform: uppercase;
-  color: white;
   display: flex;
   transition: 100ms;
+
+  font-family: 'Love Ya Like A Sister', cursive;
+  font-size: 22px;
 
   a {
     width: 100%;
@@ -18,8 +20,10 @@
 
 .sidebar__item:hover {
   background: rgba(0, 0, 0, 0.2);
+  font-size: 25px;
 }
 
 .isActive {
-  color: red;
+  background: rgba(0, 0, 0, 0.7);
+  color: #b6b6d0
 }
