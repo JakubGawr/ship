@@ -1,6 +1,6 @@
 <div class="sidebar__item">
   <a [routerLink]="sidebarItem.path" class='item' routerLinkActive="isActive">
-    <p 
+    <p
       *ngIf='!this.isCollapsed; else collapsed'
       class='item__content'
       @collapseItem
@@ -8,10 +8,9 @@
       {{sidebarItem.name}}
     </p>
   </a>
-
   <ng-template #collapsed>
-    <picture (click)='emitActive()' @collapseItem2>
-      <img src='../assets/icons/active/{{sidebarItem.icon}}' /> 
+    <picture  @collapseItem2>
+      <img src='../assets/icons/{{isActive ? "active" : "unactive"}}/{{sidebarItem.icon}}' />
     </picture>
   </ng-template>
 </div>
