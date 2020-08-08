@@ -10,6 +10,10 @@ const routes: Routes = [{
   },{
     path: 'statystyki',
     loadChildren: () => import('@ship-game/frontend/scores').then(m => m.FrontendScoresModule)
+  },{
+    path: '**',
+    redirectTo: 'gra',
+    pathMatch: 'full'
   }];
 
 @NgModule({

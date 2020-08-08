@@ -1,8 +1,15 @@
-<div class="sidebar" [@collapse]='collapsed'>
-    <div class="logo"> Statki </div>
-    <ui-sidebar-item *ngFor='let item of navItems' [sidebarItem]='item' [ngStyle]=''></ui-sidebar-item>
+<div class="sidebar" [@collapse]='isToggled'>
+    <span class='logoText'>
+        <h2 @collapseText *ngIf='!this.isCollapsed; else letter'> Statki </h2>
+    </span>
 
-    <div class="collapse" (click)='collapseSidebar()' > 
-        <img src="../assets/arrow.svg" [ngClass]="collapsed ? 'rotated' : ''">
-    </div>
+    <ui-sidebar-item *ngFor='let item of navItems' [sidebarItem]='item' [isCollapsed]='isCollapsed' (isActive)='onActive($event)'></ui-sidebar-item>
+
+    <picture class="collapse" (click)='collapseSidebar()'> 
+        <img src="../assets/icons/arrow-left.png" [ngClass]="isCollapsed ? 'isRotated' : ''">
+    </picture>
+
+    <ng-template #letter>
+        <h2 @collapseText2> S </h2>
+    </ng-template>
 </div>

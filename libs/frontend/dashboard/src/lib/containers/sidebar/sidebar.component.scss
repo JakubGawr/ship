@@ -4,15 +4,25 @@
     flex-direction: column;
     height: 100vh;
     background: var(--primary-blue);
-    width: 100%;
     align-items: center;
+    width: 200px;
 }
 
-.logo{
-    padding: 20px;
-    font-size: 39px;
-    font-family: 'Bungee Shade';
-    color: white
+.logoText{
+    display: flex;
+    position: relative;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    height: 100px;
+}
+
+h2{
+    position: absolute;
+    text-align: center;
+    font-size: 2rem;
+    font-family: 'Port Sans Block';
+    color: var(--primary-active-blue);
 }
 
 .collapse{
@@ -22,8 +32,9 @@
     top: 50%;
     width: 30px;
     height: 30px;;
-    background: #06031d;
+    background: var(--primary-active-blue);
     border-radius: 50%;
+    border: 3px solid var(--primary-blue);
     transform: translate(50%, 50%);
     cursor: pointer;
     align-items: center;
@@ -34,6 +45,6 @@
     }
 }
 
-.rotated{
+.isRotated{
     transform: rotate(180deg);
 }
