@@ -18,7 +18,8 @@
   box-shadow: 0 0 0 var(--border) var(--primary-active-blue);
   width: var(--cell-size);
   height: var(--cell-size);
-  background: white;
+  position: relative;
+  z-index: 100;
 
   &.isActive {
     background: red;
@@ -39,5 +40,6 @@
     display: block;
     z-index: 100;
     box-shadow: 0 0 0 var(--border) var(--green);
+    background: transparent;
   }
 }
