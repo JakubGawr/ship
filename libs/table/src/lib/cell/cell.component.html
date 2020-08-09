@@ -1,2 +1,2 @@
-<div class="cell"></div>
-<div *ngIf="row === 0" class="order-box">{{numberToLetter()}}</div>
+<div (click)="onCellClick()" class="cell" [activeCell]="data.isActive"></div>
+<div *ngIf="data.row === 0" class="order-box">{{numberToLetter()}}</div>

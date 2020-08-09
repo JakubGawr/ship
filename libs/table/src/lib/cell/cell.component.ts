@@ -1,4 +1,5 @@
-import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { DataCell } from '../../../../frontend/game/src/lib/board/table';
 
 @Component({
   selector: 'ui-cell',
@@ -7,13 +8,20 @@ import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class CellComponent implements OnInit {
-  @Input() row;
-  @Input() column;
-  constructor() { }
+  @Input() data: DataCell;
+  @Output() cellSelect = new EventEmitter<DataCell>();
+
+  constructor() {
+  }
 
   ngOnInit(): void {
   }
-  numberToLetter(){
-    return String.fromCharCode(65 + this.column);
+
+  numberToLetter() {
+    return String.fromCharCode(65 + this.data.column);
+  }
+
+  onCellClick() {
+    this.cellSelect.emit(this.data);
   }
 }

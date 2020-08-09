@@ -12,6 +12,7 @@ import { FrontendDashboardModule } from '@ship-game/frontend/dashboard'
 import { FrontendGameModule } from '@ship-game/frontend/game'
 
 import { AppRoutingModule } from './app-routing.module'
+import { StoreModule } from '@ngrx/store';
 
 const config: SocketIoConfig = { url: 'http://localhost:3333', options: {} };
 
@@ -24,7 +25,8 @@ const config: SocketIoConfig = { url: 'http://localhost:3333', options: {} };
     FrontendDashboardModule,
     AppRoutingModule,
     FrontendGameModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    StoreModule.forRoot({}),
   ],
   providers: [
     {
