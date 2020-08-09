@@ -1,30 +1,29 @@
-$border-gird: 2px;
 :host {
   display: block;
   position: relative;
 }
 .order-box{
   position: absolute;
-  width: 30px;
+  width: var(--cell-size);
   text-align: center;
   top: -30px;
-  height: 30px;
+  height: var(--cell-size);
 }
 
 .cell {
-  box-shadow:0 0 0 2px #0053B4;
-  width: 30px;
-  height: 30px;
+  box-shadow:0 0 0 var(--border) var(--primary-active-blue);
+  width: var(--cell-size);
+  height: var(--cell-size);
   background: white;
 
   &:before {
     content: '';
     z-index: 100;
     display: none;
-    left: $border-gird;
-    right: $border-gird;
-    bottom: $border-gird;
-    top: $border-gird;
+    left: var(--border);
+    right: var(--border);
+    bottom: var(--border);
+    top: var(--border);
     position: absolute;
     background: transparent;
   }
@@ -32,7 +31,7 @@ $border-gird: 2px;
   &:hover::before {
     display: block;
     z-index: 100;
-    box-shadow: 0 0 0 $border-gird #18FE04;
+    box-shadow: 0 0 0 var(--border) var(--green);
     background: white;
   }
 }

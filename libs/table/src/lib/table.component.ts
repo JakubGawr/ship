@@ -12,5 +12,4 @@ export class TableComponent implements OnInit {
   ngOnInit(): void {
     this.element.nativeElement.style = `grid-template-columns: 30px repeat(${this.size}, 1fr)`
   }
-
 }
