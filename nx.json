@@ -59,6 +59,15 @@
     "frontend-game": {
       "tags": []
     },
+    "frontend-scores": {
+      "tags": []
+    },
+    "frontend-settings": {
+      "tags": []
+    },
+    "frontend-rules": {
+      "tags": []
+    },
     "table": {
       "tags": []
     }

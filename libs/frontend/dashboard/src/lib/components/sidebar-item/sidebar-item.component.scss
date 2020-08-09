@@ -4,22 +4,39 @@
 
 .sidebar__item {
   cursor: pointer;
-  text-align: center;
-  text-transform: uppercase;
-  color: white;
   display: flex;
   transition: 100ms;
+  height: 60px;
+  white-space: nowrap;
 
-  a {
-    width: 100%;
-    padding: 15px 25px;
+  font-family: 'Gamja Flower', cursive;
+  font-size: 1.5rem;
+
+  picture{
+    height: 35px;
+  }
+
+}
+
+.item{
+  display: flex;
+  position: relative;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+
+  &__content{
+    position: absolute;
   }
 }
 
 .sidebar__item:hover {
   background: rgba(0, 0, 0, 0.2);
+  font-size: 1.7rem;
 }
 
 .isActive {
-  color: red;
+  background: var(--primary-active-blue);
+  color: var(--primary-font-active-blue);
 }

@@ -1,3 +1,20 @@
-<div class="sidebar">
-    <ui-sidebar-item *ngFor='let item of navItems' [sidebarItem]='item'></ui-sidebar-item>
+<div class="sidebar" [@collapse]='isToggled'>
+    <span class='logoText'>
+        <h2 @collapseText *ngIf='!this.isCollapsed; else letter'> Statki </h2>
+    </span>
+
+    <ui-sidebar-item
+      *ngFor='let item of navItems;let i = index'
+      [sidebarItem]='item'
+      [isCollapsed]='isCollapsed'
+     >
+    </ui-sidebar-item>
+
+    <picture class="collapse" (click)='collapseSidebar()'>
+        <img src="../assets/icons/arrow-left.png" [ngClass]="{'isRotated': isCollapsed }">
+    </picture>
+
+  <ng-template #letter>
+    <h2 @collapseText2> S </h2>
+  </ng-template>
 </div>

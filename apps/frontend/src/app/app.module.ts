@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
@@ -23,6 +24,7 @@ const config: SocketIoConfig = { url: 'http://localhost:3333', options: {} };
     FrontendDashboardModule,
     AppRoutingModule,
     FrontendGameModule,
+    BrowserAnimationsModule
   ],
   providers: [
     {
