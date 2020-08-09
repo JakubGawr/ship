@@ -7,7 +7,7 @@ import { Table } from './table';
   styleUrls: ['./board.component.scss']
 })
 export class BoardComponent implements OnInit {
- public board: Array<string[]> =  new Table(20).create();
+ public board: Array<string[]> =  new Table(10).create();
   constructor() { }
 
   ngOnInit(): void {

@@ -7,10 +7,13 @@ import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class CellComponent implements OnInit {
-  @Input() cords: [number,number];
+  @Input() row;
+  @Input() column;
   constructor() { }
 
   ngOnInit(): void {
   }
-
+  numberToLetter(){
+    return String.fromCharCode(65 + this.column);
+  }
 }
