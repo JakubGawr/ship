@@ -24,7 +24,8 @@
       "@ship-game/backend/validation": ["libs/backend/validation/src/index.ts"],
       "@ship-game/data-connection": ["libs/data-connection/src/index.ts"],
       "@ship-game/frontend/dashboard": ["libs/frontend/dashboard/src/index.ts"],
-      "@ship-game/frontend/game": ["libs/frontend/game/src/index.ts"]
+      "@ship-game/frontend/game": ["libs/frontend/game/src/index.ts"],
+      "@ship-game/table": ["libs/table/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

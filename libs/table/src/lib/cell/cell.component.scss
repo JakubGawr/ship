@@ -1,0 +1,31 @@
+$border-gird: 2px;
+:host {
+  display: block;
+  position: relative;
+}
+
+.cell {
+  box-shadow:0 0 0 2px #0053B4;
+  width: 30px;
+  height: 30px;
+  background: white;
+
+  &:before {
+    content: '';
+    z-index: 100;
+    display: none;
+    left: $border-gird;
+    right: $border-gird;
+    bottom: $border-gird;
+    top: $border-gird;
+    position: absolute;
+    background: transparent;
+  }
+
+  &:hover::before {
+    display: block;
+    z-index: 100;
+    box-shadow: 0 0 0 $border-gird #18FE04;
+    background: white;
+  }
+}

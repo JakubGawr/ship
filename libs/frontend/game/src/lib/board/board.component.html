@@ -1,1 +1,8 @@
-<p>board works!</p>
+<ui-table [size]="board.length || 10">
+  <ng-container *ngFor="let rowArray of board; let column = index">
+    <ng-container *ngFor="let _ of rowArray; let row = index">
+      <ui-cell [cords]="[column,row]"></ui-cell>
+    </ng-container>
+  </ng-container>
+</ui-table>
+

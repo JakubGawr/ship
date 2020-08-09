@@ -58,6 +58,9 @@
     },
     "frontend-game": {
       "tags": []
+    },
+    "table": {
+      "tags": []
     }
   }
 }
