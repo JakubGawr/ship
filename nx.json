@@ -67,6 +67,9 @@
     },
     "frontend-rules": {
       "tags": []
+    },
+    "table": {
+      "tags": []
     }
   }
 }

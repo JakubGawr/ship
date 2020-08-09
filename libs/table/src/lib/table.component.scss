@@ -1,0 +1,11 @@
+:host{
+  margin: var(--cell-size);
+  box-sizing: border-box;
+  background: white;
+  display: grid;
+  grid-gap: var(--border);
+  text-align: center;
+  align-items: center;
+  color:  var(--primary-active-blue);
+  cursor: pointer;
+}

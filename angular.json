@@ -489,6 +489,38 @@
           "style": "scss"
         }
       }
+    },
+    "table": {
+      "projectType": "library",
+      "root": "libs/table",
+      "sourceRoot": "libs/table/src",
+      "prefix": "ship-game",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/table/tsconfig.lib.json",
+              "libs/table/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/table/**/*"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/table/jest.config.js",
+            "tsConfig": "libs/table/tsconfig.spec.json",
+            "passWithNoTests": true,
+            "setupFile": "libs/table/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "style": "scss"
+        }
+      }
     }
   },
   "cli": {

@@ -1,8 +1,13 @@
 :root{
     --primary-blue: #539DF3;
     --primary-active-blue: #083E7E;
+    --green: #18FE04;
 
     --primary-font-active-blue: #B3DFFF;
+
+  // size
+  --border: 2px;
+  --cell-size: 30px;
 }
 
 @font-face {
