@@ -1,0 +1,12 @@
+<svg width="35" height="35" viewBox="0 0 35 35" fill="none" xmlns="http://www.w3.org/2000/svg">
+<circle cx="17.5" cy="17.5" r="17.5" fill="#B3DFFF"/>
+<path d="M8 29V6H19.5932H26V29H8Z" stroke="#083E7E" stroke-width="2"/>
+<path d="M22 11H19L20.3636 20L22 11Z" fill="#083E7E" stroke="#083E7E" stroke-width="2" stroke-linejoin="round"/>
+<circle cx="20.5" cy="23.5" r="1.5" fill="#083E7E"/>
+<path d="M18.6667 3H14.9077C14.552 3 14.2231 3.18891 14.0439 3.49613L12.8773 5.49613C12.4884 6.16279 12.9692 7 13.741 7H19.5C20.2136 7 20.6975 6.27407 20.4231 5.61539L19.5897 3.61538C19.4345 3.24274 19.0704 3 18.6667 3Z" fill="#B3DFFF" stroke="#083E7E" stroke-width="2" stroke-linejoin="round"/>
+<line x1="10" y1="10.5" x2="16" y2="10.5" stroke="#083E7E" stroke-linejoin="round"/>
+<line x1="10" y1="13.5" x2="16" y2="13.5" stroke="#083E7E" stroke-linejoin="round"/>
+<line x1="10" y1="16.5" x2="16" y2="16.5" stroke="#083E7E" stroke-linejoin="round"/>
+<line x1="10" y1="19.5" x2="16" y2="19.5" stroke="#083E7E" stroke-linejoin="round"/>
+<line x1="10" y1="22.5" x2="16" y2="22.5" stroke="#083E7E" stroke-linejoin="round"/>
+</svg>

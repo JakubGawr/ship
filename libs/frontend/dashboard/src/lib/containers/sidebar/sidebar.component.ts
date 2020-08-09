@@ -67,7 +67,7 @@ export interface Nav {
   ],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class SidebarComponent implements OnInit, AfterViewInit, OnDestroy {
+export class SidebarComponent implements OnInit {
   #destroy = new Subject();
   public navItems: Nav[] = [{
     path: 'gra',
@@ -86,35 +86,10 @@ export class SidebarComponent implements OnInit, AfterViewInit, OnDestroy {
   public isCollapsed = false;
   public isToggled = 'open';
 
-  @ViewChildren(SidebarItemComponent, { read: SidebarItemComponent })
-  sidebarItems = new QueryList<SidebarItemComponent>();
-
-  constructor(private router: Router) {
+  constructor() {
   }
 
   ngOnInit(): void {
-    this.router.events.pipe(
-      filter((e): e is NavigationEnd => e instanceof NavigationEnd),
-      takeUntil(this.#destroy)
-    )
-      .subscribe((e) => {
-        this.sidebarItems
-          .map((item) => {
-            const isEqual = item.sidebarItem.path === e.url.split('/').pop();
-            if (isEqual) {
-              return item.isActive = true;
-            }
-            return item.isActive = false;
-          });
-
-      });
-  }
-
-  ngAfterViewInit(): void {
-  }
-  ngOnDestroy(): void {
-    this.#destroy.next();
-    this.#destroy.complete();
   }
 
   collapseSidebar() {

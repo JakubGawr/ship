@@ -35,6 +35,4 @@ import { trigger, transition, style, animate } from '@angular/animations';
 export class SidebarItemComponent {
   @Input() sidebarItem: Nav;
   @Input() isCollapsed: boolean;
-  @Input() standardView = true;
-  isActive = false;
 }
