@@ -4,8 +4,7 @@
   flex-direction: column;
 }
 .wrapper{
-  display: grid;
-  grid-template-columns: 200px 1fr;
+  display: flex;
 }
 .content{
     display: flex;
