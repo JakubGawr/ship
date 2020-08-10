@@ -1,9 +1,18 @@
-<ui-table [size]="board.length || 10">
-  <ng-container *ngFor="let rowArray of board; let row = index">
+<ui-table [size]="(board$ | async).length || 10">
+  <ng-container *ngFor="let rowArray of board$ | async; let row = index;trackBy: trackBy">
     {{row + 1}}
-    <ng-container *ngFor="let _ of rowArray; let column = index">
-      <ui-cell [row]="row" [column]="column"></ui-cell>
+    <ng-container *ngFor="let data of rowArray;trackBy: trackBy">
+      <ui-cell [data]="data" (cellSelect)="onSelect($event)"></ui-cell>
     </ng-container>
   </ng-container>
 </ui-table>
 
+<div class="drag" draggable>OK</div>
+
+<div class="drag" draggable>OK</div>
+<div class="drag" draggable>OK</div>
+<div class="drag" draggable>OK</div>
+<div class="drag" draggable>OK</div>
+<div class="drag" draggable>OK</div>
+<div class="drag" draggable>OK</div>
+<div class="drag" draggable>OK</div>
