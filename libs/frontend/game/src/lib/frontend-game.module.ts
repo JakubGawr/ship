@@ -5,6 +5,7 @@ import { FrontendGameRoutingModule } from './frontend-game-routing.module'
 import { TableModule } from '@ship-game/table';
 import { StoreModule } from '@ngrx/store';
 import { board } from './+state/reducers';
+import { BoardFacade } from './+state/facade/facade';
 
 @NgModule({
   imports: [

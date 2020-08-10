@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { BoardFacade } from '../../../../../game/src/lib/+state/facade/facade';
 
 @Component({
   selector: 'ship-game-rules',
@@ -7,7 +8,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RulesComponent implements OnInit {
 
-  constructor() { }
+  constructor(private boardFacade: BoardFacade) { }
+
+  board$ = this.boardFacade.board$
 
   ngOnInit(): void {
   }

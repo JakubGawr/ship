@@ -1,0 +1,40 @@
+:host{
+    width: 100%;
+    display: flex;
+}
+
+.rules{
+    display: flex;
+    flex-direction: column;
+    flex: 4;
+    
+    &__text{
+        margin: 76px 66px;
+        font-family: 'Arial';
+        color: var(--primary-active-blue);
+        font-size: 1.1rem;
+        line-height: 40px;
+    }
+}
+
+.caption{
+    padding: 5px;
+    text-align: center;
+    font-size: 1.1rem;
+}
+
+.icons{
+    display: flex;
+    align-items: center;
+}
+
+.icon{
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.board-container{
+    padding: 44px 0;
+    flex: 5;
+}

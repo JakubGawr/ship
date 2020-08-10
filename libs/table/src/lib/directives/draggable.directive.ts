@@ -20,7 +20,7 @@ export class DraggableDirective implements OnInit, DoCheck {
       drag$
         .pipe(
           switchMap(() => move$.pipe(takeUntil(drop$))),
-          tap((event) => {
+          tap((event: any) => {
             this.host.nativeElement.style.top = event.clientY - 20 + 'px';
             this.host.nativeElement.style.left = event.clientX - 20 + 'px';
           })

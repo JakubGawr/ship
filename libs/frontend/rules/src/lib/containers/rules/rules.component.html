@@ -1,1 +1,31 @@
-<p>rules works!</p>
+<div class="rules">
+    <p class='rules__text'>
+        Aby rozpocząć grę, należy wybrać rodzaj floty - rosyjska (20 statków) lub klasyczna (17 statków). W jednym rzędzie można umieścić max. 5 statków, resztę rozmieść tak, aby nie stykały się ze sobą nawzajem. Następnie zapoznaj się z oznaczeniami wyjaśnionymi poniżej. Naciśnij “Rozpocznij gre” i zatapiaj do woli!
+    </p>
+
+    <div class="icons">
+        <picture class="icon">
+            <img src="../assets/icons/miss.svg">
+            <span class='caption'> pudło </span>
+        </picture>
+        <picture class="icon">
+            <img src="../assets/icons/hit.svg">
+            <span class='caption'> trafiony </span>
+        </picture>
+        <picture class="icon" style='flex: 2'>
+            <img src="../assets/icons/sink.svg">
+            <span class='caption'> trafiony zatopiony </span>
+        </picture>
+    </div>
+</div>
+
+<div class="board-container">
+    <ui-table [size]="(board$ | async).length || 10">
+        <ng-container *ngFor="let rowArray of board$ | async; let row = index;">
+          {{row + 1}}
+          <ng-container *ngFor="let data of rowArray">
+            <ui-cell [data]="data"></ui-cell>
+          </ng-container>
+        </ng-container>
+      </ui-table>
+</div>
