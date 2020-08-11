@@ -8,11 +8,12 @@ import { SocketService } from '@ship-game/data-connection';
 import { SocketIoConfig, SocketIoModule } from 'ngx-socket-io';
 import { SOCKET_TOKEN } from './tokens';
 
-import { FrontendDashboardModule } from '@ship-game/frontend/dashboard'
-import { FrontendGameModule } from '@ship-game/frontend/game'
+import { FrontendDashboardModule } from '@ship-game/frontend/dashboard';
+import { FrontendGameModule } from '@ship-game/frontend/game';
 
-import { AppRoutingModule } from './app-routing.module'
+import { AppRoutingModule } from './app-routing.module';
 import { StoreModule } from '@ngrx/store';
+import { EffectsModule } from '@ngrx/effects';
 
 const config: SocketIoConfig = { url: 'http://localhost:3333', options: {} };
 
@@ -27,12 +28,14 @@ const config: SocketIoConfig = { url: 'http://localhost:3333', options: {} };
     FrontendGameModule,
     BrowserAnimationsModule,
     StoreModule.forRoot({}),
+    EffectsModule.forRoot([])
   ],
   providers: [
     {
-      provide: SOCKET_TOKEN , useClass: SocketService
+      provide: SOCKET_TOKEN, useClass: SocketService
     }
   ],
-  bootstrap: [AppComponent],
+  bootstrap: [AppComponent]
 })
-export class AppModule {}
+export class AppModule {
+}

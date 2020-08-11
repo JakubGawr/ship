@@ -9,13 +9,13 @@ export interface Cords {
 
 export interface BoardState {
   board: DataGrid,
-  currentCell: Cords,
+  selectedCells: Cords[],
   playerAction: boolean,
 };
 
 const initialState: BoardState = {
   board: new Table(10).create(),
-  currentCell: null,
+  selectedCells: [],
   playerAction: true
 };
 
@@ -41,6 +41,14 @@ const reducer = createReducer(initialState,
       ...state,
       board: updatedBoard
     };
+  })),
+
+  on(BoardActions.addCordSuccess, ((state, {cords}) => {
+    console.log('kkk')
+    return {
+      ...state,
+      selectedCells: [...state.selectedCells, cords]
+    }
   }))
 );
 

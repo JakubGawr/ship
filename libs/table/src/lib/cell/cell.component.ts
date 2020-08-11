@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, ElementRef, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { DataCell } from '../../../../frontend/game/src/lib/board/table';
 
 @Component({
@@ -11,7 +11,7 @@ export class CellComponent implements OnInit {
   @Input() data: DataCell;
   @Output() cellSelect = new EventEmitter<DataCell>();
 
-  constructor() {
+  constructor(public element: ElementRef) {
   }
 
   ngOnInit(): void {
@@ -23,5 +23,9 @@ export class CellComponent implements OnInit {
 
   onCellClick() {
     this.cellSelect.emit(this.data);
+  }
+
+  get height() {
+    return this.element.nativeElement.innerHeight;
   }
 }

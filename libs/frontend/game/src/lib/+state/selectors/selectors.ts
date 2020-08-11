@@ -3,8 +3,12 @@ import { BoardMap } from '../reducers';
 
 
 const boardMap = createFeatureSelector<BoardMap>('board');
-const boardState = createSelector(boardMap, (state) => state.board)
+const boardState = createSelector(boardMap, (state) => state.board);
 
 export const getBoard = createSelector(boardState, (state) => {
   return state.board;
+});
+
+export const getSelectedCells = createSelector(boardState, (state) => {
+  return state.selectedCells;
 });

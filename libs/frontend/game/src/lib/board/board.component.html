@@ -1,18 +1,19 @@
-<ui-table [size]="(board$ | async).length || 10">
+<ui-table #grid [size]="(board$ | async).length || 10">
   <ng-container *ngFor="let rowArray of board$ | async; let row = index;trackBy: trackBy">
     {{row + 1}}
     <ng-container *ngFor="let data of rowArray;trackBy: trackBy">
-      <ui-cell [data]="data" (cellSelect)="onSelect($event)"></ui-cell>
+      <ui-cell #cell [data]="data"></ui-cell>
     </ng-container>
   </ng-container>
 </ui-table>
 
-<div class="drag" draggable>OK</div>
-
-<div class="drag" draggable>OK</div>
-<div class="drag" draggable>OK</div>
-<div class="drag" draggable>OK</div>
-<div class="drag" draggable>OK</div>
-<div class="drag" draggable>OK</div>
-<div class="drag" draggable>OK</div>
-<div class="drag" draggable>OK</div>
+<div class="drag" draggableBox (cellSelect)="onSelect($event)">OK</div>
+<div class="drag" draggableBox (cellSelect)="onSelect($event)">OK</div>
+<div class="drag" draggableBox (cellSelect)="onSelect($event)">OK</div>
+<div class="drag" draggableBox (cellSelect)="onSelect($event)">OK</div>
+<div class="drag" draggableBox (cellSelect)="onSelect($event)">OK</div>
+<div class="drag" draggableBox (cellSelect)="onSelect($event)">OK</div>
+<div class="drag" draggableBox (cellSelect)="onSelect($event)">OK</div>
+<div class="drag" draggableBox (cellSelect)="onSelect($event)">OK</div>
+<div class="drag" draggableBox (cellSelect)="onSelect($event)">OK</div>
+<div class="drag" draggableBox (cellSelect)="onSelect($event)">OK</div>
