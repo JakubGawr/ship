@@ -7,7 +7,7 @@ import { Component, ElementRef, Input, OnInit, Renderer2 } from '@angular/core';
 })
 export class TableComponent implements OnInit {
   @Input() size: number;
-  constructor(private renderer: Renderer2, private element: ElementRef) { }
+  constructor(private renderer: Renderer2, public element: ElementRef) { }
 
   ngOnInit(): void {
     this.element.nativeElement.style = `grid-template-columns: 30px repeat(${this.size}, var(--cell-size))`
