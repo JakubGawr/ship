@@ -1,24 +1,25 @@
 :host{
     width: 100%;
     display: flex;
+    padding: 5rem 5rem;
 }
 
 .rules{
     display: flex;
     flex-direction: column;
-    flex: 4;
+    font-family: 'Lato', sans-serif;
+    align-items: center;
+    width: 40%; 
     
     &__text{
-        margin: 76px 66px;
-        font-family: 'Arial';
         color: var(--primary-active-blue);
         font-size: 1.1rem;
-        line-height: 40px;
+        line-height: 3rem;
     }
 }
 
 .caption{
-    padding: 5px;
+    padding: 0.5rem 0;
     text-align: center;
     font-size: 1.1rem;
 }
@@ -26,15 +27,18 @@
 .icons{
     display: flex;
     align-items: center;
+    padding: 3rem 0;
+    width: 100%;
 }
 
 .icon{
     display: flex;
     flex-direction: column;
+    align-items: center;
     flex: 1;
-}
 
-.board-container{
-    padding: 44px 0;
-    flex: 5;
+    img{
+        width: 50px;
+        height: 50px;
+    }
 }
