@@ -4,18 +4,10 @@
     </p>
 
     <div class="icons">
-        <picture class="icon">
-            <img src="../assets/icons/miss.svg">
-            <span class='caption'> pudło </span>
-        </picture>
-        <picture class="icon">
-            <img src="../assets/icons/hit.svg">
-            <span class='caption'> trafiony </span>
-        </picture>
-        <picture class="icon" style='flex: 2'>
-            <img src="../assets/icons/sink.svg">
-            <span class='caption'> trafiony zatopiony </span>
-        </picture>
+        <figure class='icon' *ngFor='let icon of icons'>
+            <img src="../assets/icons/{{icon.path}}">
+            <span class='caption'> {{icon.caption}} </span>
+        </figure>
     </div>
 </div>
 
