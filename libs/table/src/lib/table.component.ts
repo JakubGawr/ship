@@ -10,6 +10,6 @@ export class TableComponent implements OnInit {
   constructor(private renderer: Renderer2, private element: ElementRef) { }
 
   ngOnInit(): void {
-    this.element.nativeElement.style = `grid-template-columns: 30px repeat(${this.size}, 1fr)`
+    this.element.nativeElement.style = `grid-template-columns: 30px repeat(${this.size}, var(--cell-size))`
   }
 }
