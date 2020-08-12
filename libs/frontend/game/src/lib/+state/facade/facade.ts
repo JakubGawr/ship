@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { BoardMap } from '../reducers';
-import { getBoard, getSelectedCells } from '../selectors/selectors';
+import { getBoard, getSelectedCells, currentBoxId } from '../selectors/selectors';
 import { BoardActions } from '../actions/actions';
 import { DataCell } from '../../board/table';
 import { Cords } from '../reducers/reducer';
@@ -10,6 +10,8 @@ import { Cords } from '../reducers/reducer';
 export class BoardFacade {
   board$ = this.store.select(getBoard);
   selectedCells$ = this.store.select(getSelectedCells);
+  currentBoxId$ = this.store.select(currentBoxId);
+
   constructor(private store: Store<BoardMap>) {
   }
 
@@ -18,6 +20,6 @@ export class BoardFacade {
   }
 
   unSelectCell(data: DataCell) {
-   // this.store.dispatch(BoardActions.markCellAsUnactive({ data }));
+    // this.store.dispatch(BoardActions.markCellAsUnactive({ data }));
   }
 }

@@ -12,3 +12,7 @@ export const getBoard = createSelector(boardState, (state) => {
 export const getSelectedCells = createSelector(boardState, (state) => {
   return state.selectedCells;
 });
+
+export const currentBoxId = createSelector(boardState, (state) => {
+  return state.currentBox;
+});

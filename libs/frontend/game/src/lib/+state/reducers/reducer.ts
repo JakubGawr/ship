@@ -7,16 +7,23 @@ export interface Cords {
   column: number
 }
 
+export interface BoxData {
+  id: number[],
+  boxAdded: boolean
+}
+
 export interface BoardState {
   board: DataGrid,
   selectedCells: Cords[],
   playerAction: boolean,
+  currentBox: BoxData
 };
 
 const initialState: BoardState = {
   board: new Table(10).create(),
   selectedCells: [],
-  playerAction: true
+  playerAction: true,
+  currentBox: null
 };
 
 const reducer = createReducer(initialState,
@@ -43,12 +50,19 @@ const reducer = createReducer(initialState,
     };
   })),
 
-  on(BoardActions.addCordSuccess, ((state, {cords}) => {
-    console.log('kkk')
+  on(BoardActions.addCordSuccess, ((state, { cords }) => {
     return {
       ...state,
-      selectedCells: [...state.selectedCells, cords]
-    }
+      selectedCells: [...state.selectedCells, cords],
+      currentBox: { id: cords.id, boxAdded: true }
+    };
+  })),
+
+  on(BoardActions.addCordFail, ((state, { id }) => {
+    return {
+      ...state,
+      currentBox: { id, boxAdded: false }
+    };
   }))
 );
 
