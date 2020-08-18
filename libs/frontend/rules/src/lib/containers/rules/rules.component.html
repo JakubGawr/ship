@@ -12,12 +12,14 @@
 </div>
 
 <div class="board-container">
+  <div class="board-wrapper">
     <ui-table [size]="(board$ | async).length || 10">
-        <ng-container *ngFor="let rowArray of board$ | async; let row = index;">
-          {{row + 1}}
-          <ng-container *ngFor="let data of rowArray">
-            <ui-cell [data]="data"></ui-cell>
-          </ng-container>
+      <ng-container *ngFor="let rowArray of board$ | async; let row = index;">
+        {{row + 1}}
+        <ng-container *ngFor="let data of rowArray">
+          <ui-cell [data]="data"></ui-cell>
         </ng-container>
-      </ui-table>
+      </ng-container>
+    </ui-table>
+  </div>
 </div>

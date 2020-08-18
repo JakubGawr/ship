@@ -2,9 +2,52 @@
   user-select: none;
 }
 
-.drag {
-  width: 45px;
-  height: 45px;
-  cursor: pointer;
-  background: yellow;
+section {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  margin: 8rem 3rem 1rem 3rem;
+
+  .info-section {
+    color: var(--primary-active-blue);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    p {
+      font-size: 20px;
+      line-height: 1.5;
+      margin-bottom: 1.5rem;
+    }
+  }
+}
+
+.boxes-wrap {
+  display: grid;
+  grid-gap: 35px;
+  grid-template-columns: repeat(4, 45px);
+
+  div {
+    width: 45px;
+    height: 45px;
+    cursor: pointer;
+    border: 2px solid var(--primary-active-blue);
+    background: rgba(83, 157, 243, 0.46);;
+  }
+
+  $grid: (
+    0: 4,
+    1: 4,
+    2: 4,
+    3: 4,
+    4: 4,
+  );
+
+  @each $row, $value in $grid {
+    @for $column from 0 through $value {
+      .drag--#{$row}--#{$column} {
+        grid-column: #{$column + 1};
+        grid-row: #{$row + 1};
+      }
+    }
+  }
 }

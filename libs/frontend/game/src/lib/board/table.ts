@@ -1,19 +1,20 @@
 export interface DataCell {
   row: number,
   column: number,
-  isActive: boolean;
+  isActive?: boolean;
+  id?: number[];
 }
 
 export type DataGrid = Array<DataCell[]>;
 
 export class Table {
-  constructor(private _size: number) {
+  constructor(private _size: number, private columns?: number) {
     this.size = _size;
   }
 
   create(): DataGrid {
     return new Array(this.size)
-      .fill(new Array(this.size).fill(null))
+      .fill(new Array(this.columns ? this.columns : this.size).fill(null))
       .map((rowArray, row) => {
         return rowArray.map((_, column) => ({ row, column, isActive: false }));
       });
