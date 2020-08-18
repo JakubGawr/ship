@@ -7,6 +7,6 @@ export const BoardActions = {
   markCellAsActive: createAction('[Board] Mark cell as active', props<{ data: DataCell }>()),
   markCellAsUnactive: createAction('[Board] Mark cell as unactive', props<{ data: DataCell }>()),
   addCord: createAction('[Board] Add Cord', props<{ cords: DataCell }>()),
-  addCordSuccess: createAction('[Board] Add Cord Success', props<{ cords: DataCell, boxAdded: boolean }>()),
+  addCordSuccess: createAction('[Board] Add Cord Success', props<{ cords: DataCell, boxAdded?: boolean }>()),
   addCordFail: createAction('[Board] Add Cord Fail', props<BoxData>())
 };

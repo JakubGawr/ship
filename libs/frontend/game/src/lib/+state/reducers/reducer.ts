@@ -1,7 +1,7 @@
 import { DataCell, DataGrid, Table } from '../../board/table';
 import { Action, createReducer, on } from '@ngrx/store';
 import { BoardActions } from '../actions/actions';
-import has = Reflect.has;
+import { getSelectedCells } from '../selectors/selectors';
 
 export type ElementFlow = 'column' | 'row'
 
@@ -12,8 +12,8 @@ export interface Cords {
 }
 
 export interface BoxData {
-  id: number[];
-  boxAdded: boolean;
+  id: number[],
+  boxAdded?: boolean
 }
 
 export interface BoardState {
@@ -189,4 +189,49 @@ function siblingElement(
 
 function oppositeDestination(destination: ElementFlow): ElementFlow {
   return destination === 'column' ? 'row' : 'column';
+}
+
+function statki2(selectedCells: Cords[]){
+  const checked_cells: Cords[] = [];
+  const ships: Array<Cords[]> = [];
+
+  let ships_counter = 0;
+
+  selectedCells.forEach(cell => {
+    if(!checked_cells.some(checkedCell => checkedCell === cell)){
+      let iterator = 1;
+      ships[ships_counter] = [cell]
+      checked_cells.push(cell)
+
+      let nextInRow = findNextInRow(selectedCells, cell, iterator)
+      let nextInCol = findNextInColumn(selectedCells, cell, iterator)
+
+      while(hasCell(checked_cells, nextInRow, nextInCol)){
+        iterator++;
+        if(nextInRow){
+          checked_cells.push(nextInRow);
+          ships[ships_counter].push(nextInRow);
+          nextInRow = findNextInRow(selectedCells, cell, iterator)
+        } else {
+          checked_cells.push(nextInCol);
+          ships[ships_counter].push(nextInCol);
+          nextInCol = findNextInColumn(selectedCells, cell, iterator)
+        };
+      }
+      ships_counter++;
+    }
+  });
+  // console.log('STATKI',ships)
+}
+
+function hasCell(checked_cells: Cords[], nextInRow: Cords, nextInCol: Cords): boolean{
+  return (nextInRow && !checked_cells.some(checkedCell => checkedCell === nextInRow)) || (nextInCol && !checked_cells.some(checkedCell => checkedCell === nextInCol))
+}
+
+function findNextInRow(selectedCells: Cords[], currentCell: Cords, iterator: number): Cords{
+  return selectedCells.find((nextCell: Cords) => nextCell.row === currentCell.row + iterator && nextCell.column === currentCell.column);
+}
+
+function findNextInColumn(selectedCells: Cords[], currentCell: Cords, iterator: number): Cords{
+  return selectedCells.find((nextCell: Cords) => nextCell.row === currentCell.row && nextCell.column === currentCell.column + iterator);
 }

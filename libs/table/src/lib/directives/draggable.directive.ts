@@ -67,6 +67,9 @@ export class DraggableDirective implements OnInit, AfterViewInit, OnDestroy {
           switchMap(() => move$.pipe(
             takeUntil(drop$.pipe(tap(this.onDrop.bind(this)))))),
           tap((event: MouseEvent) => {
+            const { x, y } = this.table.element.nativeElement.getBoundingClientRect();
+            const row = this.getRowPostion(y, this.boxCords.mouseY);
+            const column = this.getColumnPosition(x, this.boxCords.mouseX);
             this.host.nativeElement.style.position = 'absolute';
             this.boxCords = { mouseX: event.clientX, mouseY: event.clientY };
             this.host.nativeElement.style.top = event.clientY - 45 / 2 + 'px';
@@ -102,10 +105,10 @@ export class DraggableDirective implements OnInit, AfterViewInit, OnDestroy {
   }
 
   getRowPostion(gridY: number, mouseY: number) {
-    return Math.floor((mouseY - gridY - 16 - 1) / 45);
+    return Math.floor((mouseY - gridY) / (45 + 1.8));
   }
 
   getColumnPosition(gridX: number, mouseX: number) {
-    return Math.floor((mouseX - gridX - 30 - 16 - 1) / 45);
+    return Math.floor((mouseX - gridX - 30) / (45 + 2));
   }
 }
