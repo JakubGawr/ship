@@ -27,7 +27,12 @@ const config: SocketIoConfig = { url: 'http://localhost:3333', options: {} };
     AppRoutingModule,
     FrontendGameModule,
     BrowserAnimationsModule,
-    StoreModule.forRoot({}),
+    StoreModule.forRoot({}, {
+      runtimeChecks: {
+        strictStateImmutability: false,
+        strictActionImmutability: false
+      }
+    }),
     EffectsModule.forRoot([])
   ],
   providers: [
