@@ -140,14 +140,13 @@ function statki2(selectedCells: Cords[]){
   selectedCells.forEach(cell => {
     if(!checked_cells.some(checkedCell => checkedCell === cell)){
       let iterator = 1;
-
       ships[ships_counter] = [cell]
       checked_cells.push(cell)
 
       let nextInRow = findNextInRow(selectedCells, cell, iterator)
       let nextInCol = findNextInColumn(selectedCells, cell, iterator)
 
-      while((nextInRow && !checked_cells.some(checkedCell => checkedCell === nextInRow)) || (nextInCol && !checked_cells.some(checkedCell => checkedCell === nextInCol))){
+      while(hasCell(checked_cells, nextInRow, nextInCol)){
         iterator++;
         if(nextInRow){
           checked_cells.push(nextInRow);
@@ -165,10 +164,14 @@ function statki2(selectedCells: Cords[]){
   // console.log('STATKI',ships)
 }
 
-function findNextInRow(selectedCells, currentCell, iterator){
+function hasCell(checked_cells: Cords[], nextInRow: Cords, nextInCol: Cords): boolean{
+  return (nextInRow && !checked_cells.some(checkedCell => checkedCell === nextInRow)) || (nextInCol && !checked_cells.some(checkedCell => checkedCell === nextInCol))
+}
+
+function findNextInRow(selectedCells: Cords[], currentCell: Cords, iterator: number): Cords{
   return selectedCells.find((nextCell: Cords) => nextCell.row === currentCell.row + iterator && nextCell.column === currentCell.column);
 }
 
-function findNextInColumn(selectedCells, currentCell, iterator){
+function findNextInColumn(selectedCells: Cords[], currentCell: Cords, iterator: number): Cords{
   return selectedCells.find((nextCell: Cords) => nextCell.row === currentCell.row && nextCell.column === currentCell.column + iterator);
 }
