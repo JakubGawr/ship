@@ -3,7 +3,7 @@ import { Action, createReducer, on } from '@ngrx/store';
 import { BoardActions } from '../actions/actions';
 import { getSelectedCells } from '../selectors/selectors';
 
-export type ElementFlow = 'column' | 'row'
+export type ElementFlow = 'column' | 'row';
 
 export interface Cords {
   row: number;
@@ -12,8 +12,8 @@ export interface Cords {
 }
 
 export interface BoxData {
-  id: number[],
-  boxAdded?: boolean
+  id: number[];
+  boxAdded?: boolean;
 }
 
 export interface BoardState {
@@ -41,13 +41,16 @@ const reducer = createReducer(
 
   on(BoardActions.addCordSuccess, (state, { cords }) => {
     const updatedBoard = updateCell(state.board, cords, true);
-    elementsController(state.selectedCells);
-    // statki(state.board);
+    const selectedCells = [...state.selectedCells, cords];
+    const sorted = selectedCells.slice()
+      .sort((a, b) =>
+        (a.column > b.column) ? 1 : (a.column === b.column) ? ((a.row > b.row) ? 1 : -1) : -1);
+    const a = appendShips(statki2(sorted), updatedBoard);
     return {
       ...state,
-      selectedCells: [...state.selectedCells, cords],
+      selectedCells,
       currentBox: { id: cords.id, boxAdded: true },
-      board: updatedBoard
+      board: a
     };
   }),
 
@@ -61,6 +64,37 @@ const reducer = createReducer(
 
 export function boardReducer(state: BoardState | undefined, action: Action) {
   return reducer(state, action);
+}
+
+function appendShips(ships: any, dataGrid: any) {
+  return dataGrid.map((rowList: DataCell[]) => {
+    return rowList.map((data) => {
+      const okeyShip = findOkShip(data, ships);
+      if (okeyShip) {
+        return {
+          ...data,
+          ...okeyShip
+        };
+      } else {
+        return {
+          ...data
+        };
+      }
+    });
+  });
+}
+
+function findOkShip(data: DataCell, ships: Array<DataCell[]>): DataCell {
+  let ship = null;
+  ships.forEach(jd => {
+    jd.forEach(jp => {
+      if (jp.row === data.row && jp.column === data.column) {
+        ship = jp;
+      }
+    });
+
+  });
+  return ship;
 }
 
 function updateCell(
@@ -85,153 +119,85 @@ function hasSameCords(cell: Cords, { row, column }: DataCell): boolean {
   return cell.row === row && cell.column === column;
 }
 
-function sortGrid(
-  destination: 'column' | 'row',
-  currentCells: Cords[]
-): Cords[] {
-
-  return [...currentCells].sort((a, b) => a[destination] - b[destination]);
-}
-
-
-let cos = [];
-let resul = [];
-
-function statki(board: DataGrid) {
-  console.time('jeden');
-
-  const sprawdzone = [];
-  const statki = [];
+function statki2(selectedCells: DataCell[]) {
+  const checked_cells: DataCell[] = [];
+  const ships: Array<DataCell[]> = [];
 
   let ships_counter = 0;
 
-  for (let i = 0; i < board.length; i++) {
-    for (let j = 0; j < board[i].length; j++) {
-      if (board[i][j].isActive && !sprawdzone.some(cord => cord.row === i && cord.col === j)) {
-        statki[ships_counter] = [];
-        statki[ships_counter].push(board[i][j]);
-        let iterator = 1;
-
-        if (board[i + 1][j] && board[i + 1][j].isActive) {
-          while (board[i + iterator][j].isActive) {
-            statki[ships_counter].push(board[i + iterator][j]);
-            sprawdzone.push({ row: i + iterator, col: j });
-            iterator++;
-          }
-        } else if (board[i][j + 1] && board[i][j + 1].isActive) {
-          while (board[i][j + iterator].isActive) {
-            statki[ships_counter].push(board[i][j + iterator]);
-            sprawdzone.push({ row: i, col: j + iterator });
-            iterator++;
-          }
-        }
-
-        sprawdzone.push({ row: i, col: j });
-        ships_counter++;
-        iterator = 0;
-      }
-    }
-  }
-  console.timeEnd('jeden');
-  console.log('STATKI', statki);
-}
-
-function elementsController(currentCords: Cords[]) {
-  console.time('jeden');
-  const result1 = findShips(deepCopy(currentCords, 'row'), 'row');
-  console.log(deepCopy(currentCords, 'row'))
- // const result2 = findShips(deepCopy(currentCords, 'column'), 'column');
-  console.timeEnd('jeden');
-  cos = [];
-}
-
-function findShips(list: Cords[], destination: ElementFlow) {
-  let container = [];
-  const result = [];
-  list.forEach((element) => {
-    if (element.isExternal) return;
-    const find = finder(list, element, destination, container);
-    if (find.length > 0) {
-      result.push(find);
-    }
-    container = [];
-  }, []);
-  return result;
-}
-
-function deepCopy(list: Cords[], destination: ElementFlow): Cords[] {
-  return [...list.map(cord => ({ ...cord }))].sort((a, b) => (a.column > b.column) ? 1 : (a.column === b.column) ? ((a.row > b.row) ? 1 : -1) : -1 )
-}
-
-
-function finder(arr: Cords[], element: Cords, destinantion: 'column' | 'row' = 'row', container) {
-  const currentElement = element;
-  const siblingElm = siblingElement(arr, currentElement, destinantion);
-  if (siblingElm) {
-    container.push(element);
-    element.isExternal = true;
-    return finder(arr, siblingElm, destinantion, container);
-  } else {
-    return container;
-  }
-}
-
-function siblingElement(
-  list: Cords[],
-  currentElement: Cords,
-  destination: 'column' | 'row'
-) {
-  return list.find(a => {
-    return a[destination] === currentElement[destination] + 1
-      && a[oppositeDestination(destination)] === currentElement[oppositeDestination(destination)];
-  });
-}
-
-function oppositeDestination(destination: ElementFlow): ElementFlow {
-  return destination === 'column' ? 'row' : 'column';
-}
-
-function statki2(selectedCells: Cords[]){
-  const checked_cells: Cords[] = [];
-  const ships: Array<Cords[]> = [];
-
-  let ships_counter = 0;
-
-  selectedCells.forEach(cell => {
-    if(!checked_cells.some(checkedCell => checkedCell === cell)){
+  selectedCells.forEach((cell) => {
+    if (!checked_cells.some((checkedCell) => checkedCell === cell)) {
       let iterator = 1;
-      ships[ships_counter] = [cell]
-      checked_cells.push(cell)
+      ships[ships_counter] = [cell];
+      checked_cells.push(cell);
 
-      let nextInRow = findNextInRow(selectedCells, cell, iterator)
-      let nextInCol = findNextInColumn(selectedCells, cell, iterator)
+      let nextInRow = findNextInRow(selectedCells, cell, iterator);
+      let nextInCol = findNextInColumn(selectedCells, cell, iterator);
 
-      while(hasCell(checked_cells, nextInRow, nextInCol)){
+      while (hasCell(checked_cells, nextInRow, nextInCol)) {
         iterator++;
-        if(nextInRow){
+        if (nextInRow) {
           checked_cells.push(nextInRow);
-          ships[ships_counter].push(nextInRow);
-          nextInRow = findNextInRow(selectedCells, cell, iterator)
+          ships[ships_counter].push({
+            ...nextInRow, direction: 'horizontal'
+          });
+          ships[ships_counter][0].direction = 'horizontal';
+          nextInRow = findNextInRow(selectedCells, cell, iterator);
         } else {
           checked_cells.push(nextInCol);
-          ships[ships_counter].push(nextInCol);
-          nextInCol = findNextInColumn(selectedCells, cell, iterator)
-        };
+          ships[ships_counter].push({
+            ...nextInCol, direction: 'vertical'
+          });
+          ships[ships_counter][0].direction = 'vertical';
+
+          nextInCol = findNextInColumn(selectedCells, cell, iterator);
+        }
       }
       ships_counter++;
     }
   });
-  // console.log('STATKI',ships)
+  return ships.map(ship => ship.map((shipper, i) => {
+    console.log(shipper, i);
+    return {
+      ...shipper,
+      position: i === 0 ? 'first' : i === ship.length - 1 ? 'last' : undefined
+    };
+  }));
 }
 
-function hasCell(checked_cells: Cords[], nextInRow: Cords, nextInCol: Cords): boolean{
-  return (nextInRow && !checked_cells.some(checkedCell => checkedCell === nextInRow)) || (nextInCol && !checked_cells.some(checkedCell => checkedCell === nextInCol))
+function hasCell(
+  checked_cells: Cords[],
+  nextInRow: Cords,
+  nextInCol: Cords
+): boolean {
+  return (
+    (nextInRow &&
+      !checked_cells.some((checkedCell) => checkedCell === nextInRow)) ||
+    (nextInCol &&
+      !checked_cells.some((checkedCell) => checkedCell === nextInCol))
+  );
 }
 
-function findNextInRow(selectedCells: Cords[], currentCell: Cords, iterator: number): Cords{
-  return selectedCells.find((nextCell: Cords) => nextCell.row === currentCell.row + iterator && nextCell.column === currentCell.column);
+function findNextInRow(
+  selectedCells: Cords[],
+  currentCell: Cords,
+  iterator: number
+): Cords {
+  return selectedCells.find(
+    (nextCell: Cords) =>
+      nextCell.row === currentCell.row + iterator &&
+      nextCell.column === currentCell.column
+  );
 }
 
-function findNextInColumn(selectedCells: Cords[], currentCell: Cords, iterator: number): Cords{
-  return selectedCells.find((nextCell: Cords) => nextCell.row === currentCell.row && nextCell.column === currentCell.column + iterator);
+function findNextInColumn(
+  selectedCells: Cords[],
+  currentCell: Cords,
+  iterator: number
+): Cords {
+  return selectedCells.find(
+    (nextCell: Cords) =>
+      nextCell.row === currentCell.row &&
+      nextCell.column === currentCell.column + iterator
+  );
 }

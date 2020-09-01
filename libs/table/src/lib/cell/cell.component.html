@@ -1,2 +1,14 @@
 <div (click)="onCellClick()" class="cell" [activeCell]="data.isActive"></div>
+<div
+  [class.isActive]="data.isActive"
+  [ngClass]="{
+'square--first-hor': equals('horizontal', data.direction) && equals('first', data.position),
+'square--inside-hor':  equals('horizontal', data.direction) && equals(undefined, data.position),
+'square--last-hor':  equals('horizontal', data.direction) && equals('last', data.position),
+'square--first-ver': equals('vertical', data.direction) && equals('first', data.position),
+'square--inside-ver': equals('vertical', data.direction) && equals(undefined, data.position),
+'square--last-ver':  equals('vertical', data.direction) && equals('last', data.position)
+
+}" *ngIf="data.isActive" class="square">
+</div>
 <div *ngIf="data.row === 0" class="order-box">{{numberToLetter()}}</div>

@@ -3,6 +3,9 @@ export interface DataCell {
   column: number,
   isActive?: boolean;
   id?: number[];
+  shippy?: boolean;
+  direction?: 'vertical' | 'horizontal';
+  position?: 'last' | 'first';
 }
 
 export type DataGrid = Array<DataCell[]>;
