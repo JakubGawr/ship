@@ -19,7 +19,11 @@
     <ng-container *ngFor="let rowArray of board$ | async; let row = index;trackBy: trackBy">
       {{row + 1}}
       <ng-container *ngFor="let data of rowArray;trackBy: trackBy">
-        <ui-cell #cell [data]="data"></ui-cell>
+        <ui-cell
+          [class.horizontal]="data.direction === 'horizontal'"
+          [class.vertical]="data.direction === 'vertical'"
+          #cell
+          [data]="data"></ui-cell>
       </ng-container>
     </ng-container>
   </ui-table>

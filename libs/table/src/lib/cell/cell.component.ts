@@ -17,6 +17,10 @@ export class CellComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  equals(toCompare: string, comparer: any) {
+    return toCompare === comparer
+  }
+
   numberToLetter() {
     return String.fromCharCode(65 + this.data.column);
   }

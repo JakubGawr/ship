@@ -25,19 +25,19 @@ export class BoardEffects {
             return [
               BoardActions.markCellAsActive({
                 data: {
-                  ...cords,
+                  ...cords
                 }
               }),
-              BoardActions.addCordSuccess({ cords })
+              BoardActions.addCordSuccess({ cords, boxAdded: true })
             ];
           }
           return [
             BoardActions.markCellAsUnactive({
               data: {
-                ...cords,
+                ...cords
               }
             }),
-            BoardActions.addCordFail({id: cords.id})
+            BoardActions.addCordFail({ id: cords.id, boxAdded: false })
           ];
         })
       );
